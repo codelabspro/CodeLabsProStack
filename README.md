@@ -1,6 +1,6 @@
 # CodeLabsProStack
 
-
+CodeLabsProStack is a SvelteKit - NextJS - (fast)API - Postgres- stack toolkit for building, testing and deploying fullstack CMS, CRM and Mobile SaaS applications
 
 ## Useful Links
 
