@@ -17,7 +17,7 @@ from hashing import Hash
 
 ###############################################################################
 # app = FastAPI()
-app = FastAPI(title ="CodeLabsPro API", version="0.1.0")
+app = FastAPI(title ="CodeLabsProStack API", version="0.1.0")
 
 
 ###############################################################################
@@ -71,7 +71,7 @@ admin.add_view(PostAdmin)
 ###############################################################################
 @app.get('/')
 def index():
-    return 'Welcome to FAPS Stack'
+    return 'CodeLabsProStack'
 
 
 app.include_router(post.router)
