@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, status, HTTPException, Response
 
 import schemas, database, models
 from sqlalchemy.orm import Session
+from repository import post
 
 router = APIRouter(
     tags = ['Posts']
@@ -12,13 +13,14 @@ router = APIRouter(
 
 ###############################################################################
 ## Post
-@router.post('/blogpost', status_code=status.HTTP_201_CREATED)
+
+@router.get('/posts', response_model=List[schemas.ShowPost])
+def all(db: Session = Depends(database.get_db)):
+    return post.get_all(db)
+
+@router.post('/post', status_code=status.HTTP_201_CREATED)
 def create(request: schemas.Post, db: Session = Depends(database.get_db)):
-    new_post = models.Post(title=request.title, body=request.body, author_id=request.author_id)
-    db.add(new_post)
-    db.commit()
-    db.refresh(new_post)
-    return new_post
+    return post.create(request, db)
 
 @router.delete('/blogpost/{id}', status_code=200)
 def destroy(id, db: Session = Depends(database.get_db)):
@@ -38,10 +40,7 @@ def update(id, request: schemas.Post, db: Session = Depends(database.get_db)):
     db.commit()
     return {'detail': f"Post with id {id} was updated"}
 
-@router.get('/blogposts', response_model=List[schemas.ShowPost])
-def get_posts(db: Session = Depends(database.get_db)):
-   posts = db.query(models.Post).all()
-   return posts
+
 
 @router.get('/blogpost/{id}', status_code=200, response_model=schemas.ShowPost)
 def read_post(id, response: Response, db: Session = Depends(database.get_db)):
