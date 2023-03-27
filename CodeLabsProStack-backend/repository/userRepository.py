@@ -1,7 +1,7 @@
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from fastapi import APIRouter, Depends, status, HTTPException, Response
-import schemas, database, models
+import schemas, models
 from hashing import Hash
 from sqlalchemy.orm import Session
 

@@ -6,7 +6,7 @@ from starlette.requests import Request
 from starlette.responses import RedirectResponse
 
 from schemas import Post
-from router import post, user
+from router import post, user, authentication
 from typing import List
 
 import models, schemas
@@ -74,6 +74,7 @@ def index():
     return 'CodeLabsProStack'
 
 
+app.include_router(authentication.router)
 app.include_router(post.router)
 app.include_router(user.router)
 
