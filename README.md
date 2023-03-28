@@ -44,6 +44,8 @@ pip install sqladmin
 ```
 pip install "python-jose[cryptography]"
 
+pip install "passlib[bcrypt]"
+
 ```
 
 ## Run backend
