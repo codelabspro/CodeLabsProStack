@@ -42,7 +42,7 @@ pip install sqladmin
 ## JWT Dependencies
 
 ```
-python-jose
+pip install "python-jose[cryptography]"
 
 ```
 
