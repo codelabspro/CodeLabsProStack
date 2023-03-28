@@ -39,7 +39,12 @@ pip install bcrypt
 pip install sqladmin
 
 ```
+## JWT Dependencies
 
+```
+python-jose
+
+```
 
 ## Run backend
 
