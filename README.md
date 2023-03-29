@@ -60,3 +60,33 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 
 ```
+
+
+## Deployment
+
+* Dockerfile https://fastapi.tiangolo.com/deployment/docker/
+
+```
+Dockerfile¶
+
+Now in the same project directory create a file Dockerfile with:
+
+#
+FROM python:3.9
+
+#
+WORKDIR /code
+
+#
+COPY ./requirements.txt /code/requirements.txt
+
+#
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+#
+COPY ./app /code/app
+
+#
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+
+```
