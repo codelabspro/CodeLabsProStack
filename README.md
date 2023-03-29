@@ -51,7 +51,7 @@ pip install "passlib[bcrypt]"
 ## Run backend
 
 ```
-cd CodeLabsProStack-backend
+cd src
 
 python3 -m venv myvenv OR source myvenv/bin/activate
 
