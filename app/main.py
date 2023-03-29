@@ -10,15 +10,32 @@ from router import post, user, authentication
 from typing import List
 
 import models, schemas
-from database import SessionLocal, engine, get_db
+from database import SessionLocal, engine, get_db, create_db_and_tables
 from sqlalchemy.orm import Session
 from hashing import Hash
+
+from fastapi.middleware.cors import CORSMiddleware
 
 
 ###############################################################################
 # app = FastAPI()
 app = FastAPI(title ="CodeLabsProStack API", version="0.1.0")
 
+#We define authorizations for middleware components
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:8000", "https://codelabsprostack.onrender.com"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+#We use a callback to trigger the creation of the table if they don't exist yet
+#When the API is starting
+@app.on_event("startup")
+def on_startup():
+    print("Calling Created DB and Tables")
+    create_db_and_tables()
 
 ###############################################################################
 class AdminAuth(AuthenticationBackend):
