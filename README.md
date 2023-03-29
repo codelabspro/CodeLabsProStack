@@ -48,7 +48,7 @@ pip install "passlib[bcrypt]"
 
 ```
 
-## Run backend
+## Run backend locally
 
 ```
 cd src
