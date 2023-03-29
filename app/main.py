@@ -63,7 +63,7 @@ class PostAdmin(ModelView, model=models.Post):
     can_edit = True
     can_delete = True
     can_view_details = True
-    column_list = [models.Post.id, models.Post.title, models.Post.body, models.Post.author_id, models.Post.author.email]
+    column_list = [models.Post.id, models.Post.title, models.Post.body, models.Post.author_id, models.Post.author]
 
 
 admin.add_view(UserAdmin)
