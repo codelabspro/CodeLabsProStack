@@ -25,17 +25,47 @@ from sqlmodel import Field, Relationship, Session, SQLModel, create_engine
 #     email = Column(String)
 #     password = Column(String)
 #     posts = relationship("Post", back_populates="author")
-
-class User(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
+class UserBase(SQLModel):
     name: str
     email: str
     password: str
+
+class User(UserBase, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
     posts: List["Post"] = Relationship(back_populates="author")
 
-class Post(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
+class UserCreate(UserBase):
+    pass
+
+class UserRead(UserBase):
+    id: int
+
+# Post
+class PostBase(SQLModel):
     title: str
     body: str
+
+
+class Post(PostBase, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
     author_id: Optional[int] = Field(default=None, foreign_key="user.id")
     author: Optional[User] = Relationship(back_populates="posts")
+
+class PostCreate(PostBase):
+    pass
+
+class PostRead(PostBase):
+    id: int
+
+# Auth
+class Login(SQLModel):
+    username: str
+    password: str
+
+
+class Token(SQLModel):
+    access_token: str
+    token_type: str
+
+class TokenData(SQLModel):
+    email: str | None = None

@@ -166,7 +166,10 @@ Problems? Open an issue on https://github.com/skeletonlabs/skeleton/issues if no
 Done! You can now:
 
 cd web
+
+###################################
 npm run dev
+###################################
 ```
 
 
