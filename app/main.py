@@ -5,11 +5,10 @@ from sqladmin.authentication import AuthenticationBackend
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
 
-from schemas import Post
 from router import post, user, authentication
 from typing import List
 
-import models, schemas
+import models
 from database import SessionLocal, engine, get_db, create_db_and_tables
 from sqlalchemy.orm import Session
 from hashing import Hash

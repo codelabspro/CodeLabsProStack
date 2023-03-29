@@ -25,8 +25,10 @@ from sqlmodel import Field, Relationship, Session, SQLModel, create_engine
 #     email = Column(String)
 #     password = Column(String)
 #     posts = relationship("Post", back_populates="author")
+
+# User
 class UserBase(SQLModel):
-    name: str
+    name: str = Field(index=True)
     email: str
     password: str
 
@@ -40,22 +42,43 @@ class UserCreate(UserBase):
 class UserRead(UserBase):
     id: int
 
+class UserRead(UserBase):
+    id: int
+
+class UserUpdate(SQLModel):
+    id: Optional[int] = None
+    name: Optional[str] = None
+    email: Optional[str] = None
+    password: Optional[str] = None
+
 # Post
 class PostBase(SQLModel):
     title: str
     body: str
+    author_id: Optional[int] = Field(default=None, foreign_key="user.id")
 
 
 class Post(PostBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    author_id: Optional[int] = Field(default=None, foreign_key="user.id")
     author: Optional[User] = Relationship(back_populates="posts")
+
+class PostRead(PostBase):
+    id: Optional[int] = None
 
 class PostCreate(PostBase):
     pass
 
-class PostRead(PostBase):
-    id: int
+class PostUpdate(SQLModel):
+    name: Optional[str] = None
+    email: Optional[str] = None
+    password: Optional[str] = None
+    author_id: Optional[int] = None
+
+class PostReadWithUser(PostRead):
+    author: Optional[UserRead] = None
+
+class UserReadWithPosts(UserRead):
+    posts: List[PostRead] = []
 
 # Auth
 class Login(SQLModel):
