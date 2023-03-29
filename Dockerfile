@@ -1,10 +1,11 @@
-FROM python:3.10-slim
+FROM python:3.10
 
+RUN mkdir -p /code
 WORKDIR /code
 
-COPY ./requirements.txt /code/requirements.txt
+COPY ./app/requirements.txt /code/app/requirements.txt
 
-RUN pip3 install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip3 install --no-cache-dir --upgrade -r /code/app/requirements.txt
 
 COPY ./app /code/app
 
