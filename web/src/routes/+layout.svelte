@@ -16,6 +16,7 @@
 	<AppBar>
 		<h3 class="text-left"><a href="/">CodeLabsProStack</a></h3>
 		<a href="about/" class="text-right">About</a>
+		<a href="prompts/" class="text-right">Prompts</a>
 	</AppBar>
 	</svelte:fragment>
 		<slot />
