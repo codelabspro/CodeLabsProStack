@@ -87,6 +87,37 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 COPY ./app /code/app
 
 #
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
 
+```
+
+* Build Dockerfile
+
+```
+docker build -t codelabsprostack:0.0.1 .
+```
+
+* Run Docker Container Locally
+
+```
+docker run -p 8080:8080 --name codelabsprostack codelabsprostack:0.0.1
+```
+
+* List docker images
+
+```
+docker images -a
+```
+
+
+* List running docker processes
+
+```
+docker ps -a
+```
+
+* Remove running docker process
+
+```
+docker rm codelabsprostack
 ```
