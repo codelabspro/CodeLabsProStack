@@ -182,3 +182,18 @@ cd web
 npm run dev
 
 ```
+
+## Alembic
+
+* Alembic for migraations
+
+```
+pip install alembic
+```
+
+
+
+## Useful Links
+
+Alembic - https://youtu.be/SdcH6IEi6nE
+
