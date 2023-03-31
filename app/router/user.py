@@ -54,7 +54,7 @@ def read_user(
 def update_user(
     *,
     session: Session = Depends(database.get_session),
-    user_id: int, request: models.UserCreate,
+    user_id: int,
     user: models.UserUpdate,
 ):
     db_user = session.get(models.User, user_id)
