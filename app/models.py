@@ -26,6 +26,7 @@ from sqlmodel import Field, Relationship, Session, SQLModel, create_engine
 #     password = Column(String)
 #     posts = relationship("Post", back_populates="author")
 
+###############################################################################
 # User
 class UserBase(SQLModel):
     name: str = Field(index=True)
@@ -51,6 +52,7 @@ class UserUpdate(SQLModel):
     email: Optional[str] = None
     password: Optional[str] = None
 
+###############################################################################
 # Post
 class PostBase(SQLModel):
     title: str
@@ -80,6 +82,7 @@ class PostReadWithUser(PostRead):
 class UserReadWithPosts(UserRead):
     posts: List[PostRead] = []
 
+###############################################################################
 # Auth
 class Login(SQLModel):
     username: str
@@ -92,3 +95,5 @@ class Token(SQLModel):
 
 class TokenData(SQLModel):
     email: str | None = None
+
+###############################################################################
