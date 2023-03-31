@@ -192,7 +192,7 @@ alembic init <alembic_folder_name>
 ```
 pip install alembic
 
-alembic init <alembic_folder_name> OR alembic init alembic
+alembic init <alembic_migrations_folder> OR alembic init migrations
 
 
 ```
