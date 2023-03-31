@@ -232,6 +232,11 @@ target_metadata = SQLModel.metadata
 ```
 cd app
 alembic revision --autogenerate -m "Create"
+```
+
+* Alembic run migrations
+```
+cd app
 alembic upgrade heads
 ```
 
