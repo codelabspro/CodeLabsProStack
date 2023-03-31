@@ -251,6 +251,10 @@ cd app
 alembic upgrade heads
 ```
 
+* Alembic downgrade
+```
+alembic downgrade <version>
+```
 
 ## Useful Links
 
