@@ -185,18 +185,21 @@ npm run dev
 
 ## Alembic
 
-* Alembic for migraations
+* Alembic for migrations
 
 alembic init <alembic_folder_name>
 
 ```
 pip install alembic
 
-alembic init <alembic_migrations_folder> OR alembic init migrations
+alembic init <alembic_migrations_folder> OR alembic init alembic
 
 
 ```
 
+* Alembic create migrations
+
+alembic revision --autogenerate -m "Create"
 
 
 ## Useful Links
