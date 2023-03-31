@@ -230,6 +230,7 @@ target_metadata = SQLModel.metadata
 * Alembic create migrations
 
 ```
+cd app
 alembic revision --autogenerate -m "Create"
 alembic upgrade heads
 ```
