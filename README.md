@@ -194,7 +194,26 @@ pip install alembic
 
 alembic init <alembic_migrations_folder> OR alembic init alembic
 
+* alembic.ini
+```
+Add sqlalchemy.url = postgres://codelabsprostack_admin_1:@127.0.0.1/codelabsprostack_prod_1 to line 64 of alembic.ini
+```
 
+
+* script.py.mako
+```
+Add
+import sqlmodel
+below
+import sqlalchemy as sa in script.py.mako
+```
+
+* env.py - In env.py
+Below
+from logging.config import fileConfig
+```
+from models import *
+from sqlmodel import SQLModel
 ```
 
 * Alembic create migrations
