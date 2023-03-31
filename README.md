@@ -216,9 +216,23 @@ from models import *
 from sqlmodel import SQLModel
 ```
 
+Change
+```
+target_metadata = None
+```
+
+to
+
+```
+target_metadata = SQLModel.metadata
+```
+
 * Alembic create migrations
 
+```
 alembic revision --autogenerate -m "Create"
+alembic upgrade heads
+```
 
 
 ## Useful Links
