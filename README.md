@@ -187,13 +187,21 @@ npm run dev
 
 * Alembic for migraations
 
+alembic init <alembic_folder_name>
+
 ```
 pip install alembic
+
+alembic init <alembic_folder_name> OR alembic init alembic
+
+
 ```
 
 
 
 ## Useful Links
+
+Alembic + SQLModel - https://www.youtube.com/watch?v=Rb4_90gG_Lc
 
 Alembic - https://youtu.be/SdcH6IEi6nE
 

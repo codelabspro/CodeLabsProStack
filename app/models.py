@@ -69,9 +69,9 @@ class PostCreate(PostBase):
     pass
 
 class PostUpdate(SQLModel):
-    name: Optional[str] = None
-    email: Optional[str] = None
-    password: Optional[str] = None
+    id: Optional[str] = None
+    title: Optional[str] = None
+    body: Optional[str] = None
     author_id: Optional[int] = None
 
 class PostReadWithUser(PostRead):
