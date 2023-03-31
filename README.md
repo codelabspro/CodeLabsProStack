@@ -199,6 +199,17 @@ alembic init <alembic_migrations_folder> OR alembic init alembic
 Add sqlalchemy.url = postgres://codelabsprostack_admin_1:@127.0.0.1/codelabsprostack_prod_1 to line 64 of alembic.ini
 ```
 
+OR
+
+In env.py, load CONNECTION_STRING from .env
+```
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+CONNECTION_STRING = os.environ.get("CONNECTION_STRING")
+config.set_main_option('sqlalchemy.url', CONNECTION_STRING)
+```
+
 
 * script.py.mako
 ```
