@@ -288,6 +288,10 @@ alembic revision --autogenerate -m "Create"
 
 alembic revision --autogenerate -m "Added tags to Post user model"
 
+alembic revision --autogenerate -m "Removed tags from Post user model"
+
+alembic revision --autogenerate -m "Added Prompt dataclass to models"
+
 alembic upgrade heads
 ```
 
