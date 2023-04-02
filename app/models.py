@@ -36,6 +36,7 @@ class UserBase(SQLModel):
 class User(UserBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     posts: List["Post"] = Relationship(back_populates="author")
+    prompts: List["Prompt"] = Relationship(back_populates="author")
 
 class UserCreate(UserBase):
     pass
@@ -81,6 +82,7 @@ class PostReadWithUser(PostRead):
 
 class UserReadWithPosts(UserRead):
     posts: List[PostRead] = []
+    prompts: List[PostRead] = []
 
 ###############################################################################
 # Prompt

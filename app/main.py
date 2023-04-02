@@ -5,7 +5,7 @@ from sqladmin.authentication import AuthenticationBackend
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
 
-from router import post, user, authentication
+from router import post, prompt, user, authentication
 from typing import List
 
 import models
