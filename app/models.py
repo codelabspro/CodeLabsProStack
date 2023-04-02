@@ -83,6 +83,36 @@ class UserReadWithPosts(UserRead):
     posts: List[PostRead] = []
 
 ###############################################################################
+# Prompt
+class PromptBase(SQLModel):
+    title: str
+    body: str = Field(sa_column=Column(TEXT))
+    author_id: Optional[int] = Field(default=None, foreign_key="user.id")
+
+
+class Prompt(PromptBase, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    author: Optional[User] = Relationship(back_populates="prompts")
+
+class PromptRead(PromptBase):
+    id: Optional[int] = None
+
+class PromptCreate(PromptBase):
+    pass
+
+class PromptUpdate(SQLModel):
+    id: Optional[str] = None
+    title: Optional[str] = None
+    body: Optional[str] = None
+    author_id: Optional[int] = None
+
+class PromptReadWithUser(PromptRead):
+    author: Optional[UserRead] = None
+
+class UserReadWithPrompts(UserRead):
+    prompts: List[PromptRead] = []
+
+###############################################################################
 # Auth
 class Login(SQLModel):
     username: str

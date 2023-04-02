@@ -81,9 +81,17 @@ class PostAdmin(ModelView, model=models.Post):
     can_view_details = True
     column_list = [models.Post.id, models.Post.title, models.Post.body, models.Post.author_id, models.Post.author]
 
+class PromptAdmin(ModelView, model=models.Prompt):
+    can_create = True
+    can_edit = True
+    can_delete = True
+    can_view_details = True
+    column_list = [models.Prompt.id, models.Prompt.title, models.Prompt.body, models.Prompt.author_id, models.Prompt.author]
+
 
 admin.add_view(UserAdmin)
 admin.add_view(PostAdmin)
+admin.add_view(PromptAdmin)
 ###############################################################################
 @app.get('/')
 def index():
@@ -92,6 +100,7 @@ def index():
 
 app.include_router(authentication.router)
 app.include_router(post.router)
+app.include_router(prompt.router)
 app.include_router(user.router)
 
 ###############################################################################
