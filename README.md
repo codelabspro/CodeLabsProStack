@@ -256,6 +256,41 @@ alembic upgrade heads
 alembic downgrade <version>
 ```
 
+## Postgres Troubleshooting
+
+```
+psql --host=localhost --username=my_user --dbname=my_database
+
+psql --host=localhost --username=codelabsprostack_admin_1 --dbname=codelabsprostack_prod_1
+
+psql postgres -c 'SHOW config_file'
+                config_file
+--------------------------------------------
+ /opt/homebrew/var/postgres/postgresql.conf`
+
+
+postgres=# REASSIGN OWNED BY skfaps_user TO unicorn_user;
+REASSIGN OWNED
+postgres=# DROP OWNED BY skfaps_user;
+DROP OWNED
+postgres=# DROP USER skfaps_user;
+ERROR:  role "skfaps_user" cannot be dropped because some objects depend on it
+DETAIL:  1 object in database skfaps_dev_1
+postgres=# DROP DATABASE skfaps_dev_1;
+DROP DATABASE
+postgres=# DROP USER skfaps_user;
+ ```
+
+# Migrations Log
+
+```
+alembic revision --autogenerate -m "Create"
+
+alembic revision --autogenerate -m "Added tags to Post user model"
+
+alembic upgrade heads
+```
+
 ## Useful Links
 
 Alembic + SQLModel - https://www.youtube.com/watch?v=Rb4_90gG_Lc
