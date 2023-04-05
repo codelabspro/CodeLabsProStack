@@ -1,3 +1,6 @@
+import os, sys
+from os.path import join, dirname
+from dotenv import load_dotenv
 from fastapi import FastAPI, Depends, Response, status, HTTPException
 from typing import Optional
 from sqladmin import Admin, ModelView
@@ -15,6 +18,11 @@ from hashing import Hash
 
 from fastapi.middleware.cors import CORSMiddleware
 
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+SECRET_KEY = os.environ.get("SECRET_KEY")
+ALGORITHM = os.environ.get("ALGORITHM")
 
 ###############################################################################
 # app = FastAPI()
@@ -62,7 +70,7 @@ class AdminAuth(AuthenticationBackend):
         # Check the token in depth
 
 
-authentication_backend = AdminAuth(secret_key="12345")
+authentication_backend = AdminAuth(secret_key=SECRET_KEY)
 admin = Admin(app=app, engine=engine, authentication_backend=authentication_backend)
 
 # admin = Admin(app, engine)
