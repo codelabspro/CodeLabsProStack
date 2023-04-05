@@ -36,9 +36,14 @@ def read_posts(
     offset: int = 0,
     limit: int = Query(default=100, lte=100),
 ):
-    # posts = db.query(models.Post).all()
-    posts = session.exec(select(models.Post).offset(offset).limit(limit)).all()
+    # posts = session.exec(select(models.Post).offset(offset).limit(limit)).all()
+    if current_user is None:
+        raise HTTPException(status_code=401, detail="User not authenticated")
+
+    posts = session.query(models.Post).filter(models.Post.author_id == current_user.id).offset(offset).limit(limit).all()
     return posts
+    # posts = session.exec(session.query(models.Post).filter(models.Post.author_id == current_user.id)).all()
+    # return posts
 
 @router.get('/posts/{post_id}', response_model=models.PostReadWithUser)
 def read_post(

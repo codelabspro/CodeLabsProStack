@@ -51,12 +51,15 @@ pip install "passlib[bcrypt]"
 ## Run backend locally
 
 ```
-cd src
+conda deactivate
+
+cd app
 
 python3 -m venv myvenv OR source myvenv/bin/activate
 
 pip install -r requirements.txt
 ###################################
+
 uvicorn main:app --reload
 ###################################
 ```
@@ -301,3 +304,9 @@ Alembic + SQLModel - https://www.youtube.com/watch?v=Rb4_90gG_Lc
 
 Alembic - https://youtu.be/SdcH6IEi6nE
 
+
+## Generate SECRET_KEY
+
+openssl rand -base64 32
+
+ee8b93f88b000896451907e0f6e7fe7b1fc62b096a3ff9b8166577eb9390150b

@@ -1,8 +1,15 @@
+import os, sys
+from os.path import join, dirname
+from dotenv import load_dotenv
 from datetime import datetime, timedelta
 from jose import JWTError, jwt
 import models
 
-SECRET_KEY = "ee8b93f88b000896451907e0f6e7fe7b1fc62b096a3ff9b8166577eb9390150b"
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+SECRET_KEY = os.environ.get("SECRET_KEY")
+ALGORITHM = os.environ.get("ALGORITHM")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
