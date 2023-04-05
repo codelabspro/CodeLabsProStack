@@ -35,7 +35,8 @@ def read_prompts(
     offset: int = 0,
     limit: int = Query(default=100, lte=100),
 ):
-    prompts = session.exec(select(models.Prompt).offset(offset).limit(limit)).all()
+    # prompts = session.exec(select(models.Prompt).offset(offset).limit(limit)).all()
+    prompts = session.query(models.Prompt).filter(models.Prompt.author_id == current_user.id).offset(offset).limit(limit).all()
     return prompts
 
 @router.get('/prompts/{prompt_id}', response_model=models.PromptReadWithUser)
